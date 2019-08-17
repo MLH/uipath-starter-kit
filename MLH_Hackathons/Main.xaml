@@ -1,0 +1,153 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="541.714285714286,2056.57142857143" sap2010:WorkflowViewState.IdRef="Main_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="This automation will open up the MLH home page in the Chrome browser and navigate to the North America Hackathons page. The Name, URL, Dates, and Location for all of the hackathons will be scraped into a DataTable. The user will be asked to choose a folder where a .csv file that contains the scraped results will be saved. The user will be notified after the save is complete." DisplayName="Main" sap:VirtualizedContainerService.HintSize="501.714285714286,1936.57142857143" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:Browser" Name="MLH_Browser" />
+      <Variable x:TypeArguments="sd:DataTable" Name="HackathonDataTable" />
+      <Variable x:TypeArguments="x:String" Name="FolderToSave" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="FilePath" />
+      <Variable x:TypeArguments="x:Boolean" Name="FileExists" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:OpenBrowser BrowserType="Chrome" DisplayName="Open MLH Home Page" Hidden="False" sap:VirtualizedContainerService.HintSize="464,120" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" UiBrowser="[MLH_Browser]" Url="https://mlh.io/">
+      <ui:OpenBrowser.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="216,21.7142857142857" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+        </ActivityAction>
+      </ui:OpenBrowser.Body>
+    </ui:OpenBrowser>
+    <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[MLH_Browser]" BrowserType="Chrome" DisplayName="Attach MLH Home Page" sap:VirtualizedContainerService.HintSize="464,655.428571428571" sap2010:WorkflowViewState.IdRef="BrowserScope_1">
+      <ui:BrowserScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="335.428571428571,548" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Hackathons" sap:VirtualizedContainerService.HintSize="313.714285714286,105.142857142857" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="cd05c55eb718c48c41ff1664824312eb" Selector="&lt;webctrl aaname='Hackathons' parentid='main-navbar-collapse' tag='A' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" sap2010:Annotation.AnnotationText="Note: This uses SimulateClick" ClickType="CLICK_SINGLE" DisplayName="Click North America Hackathons" sap:VirtualizedContainerService.HintSize="313.714285714286,134.285714285714" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="True">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="e22360c1fa7c43d769a6a6f0b7cb7410" Selector="&lt;webctrl aaname='North America Hackathons' parentid='main-navbar-collapse' tag='A' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Click.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:Click>
+            <ui:ExtractData NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[HackathonDataTable]" DelayBetweenPagesMS="300" DisplayName="Scrape Hackathon Table" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='div' class='container feature' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div'/&gt;&lt;webctrl tag='div' class='event-wrapper' idx='1'/&gt;&lt;webctrl tag='a' class='event-link' idx='1'/&gt;&lt;webctrl tag='div' class='inner' idx='1'/&gt;&lt;/row&gt;&lt;column exact='1' name='Name' attr='text' name2='URL' attr2='href'&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='div' class='container feature' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div'/&gt;&lt;webctrl tag='div' class='event-wrapper' idx='1'/&gt;&lt;webctrl tag='a' class='event-link' idx='1'/&gt;&lt;webctrl tag='div' class='inner' idx='1'/&gt;&lt;webctrl tag='h3' class='event-name' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Dates' attr='text'&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='div' class='container feature' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div'/&gt;&lt;webctrl tag='div' class='event-wrapper' idx='1'/&gt;&lt;webctrl tag='a' class='event-link' idx='1'/&gt;&lt;webctrl tag='div' class='inner' idx='1'/&gt;&lt;webctrl tag='p' class='event-date' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Location' attr='text'&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='div' class='container feature' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div'/&gt;&lt;webctrl tag='div' class='event-wrapper' idx='1'/&gt;&lt;webctrl tag='a' class='event-link' idx='1'/&gt;&lt;webctrl tag='div' class='inner' idx='1'/&gt;&lt;webctrl tag='div' class='event-location' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="313.714285714286,105.142857142857" sap2010:WorkflowViewState.IdRef="ExtractData_1" MaxNumberOfResults="0">
+              <ui:ExtractData.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="9cbc2cd6aa4f445b9ae2b190d9ab05c9" Selector="&lt;webctrl tag='BODY' /&gt;" WaitForReady="COMPLETE" />
+              </ui:ExtractData.Target>
+            </ui:ExtractData>
+          </Sequence>
+        </ActivityAction>
+      </ui:BrowserScope.Body>
+    </ui:BrowserScope>
+    <ui:CloseTab Browser="[MLH_Browser]" DisplayName="Close Tab - MLH Browser" sap:VirtualizedContainerService.HintSize="464,21.7142857142857" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
+    <ui:MessageBox ChosenButton="{x:Null}" Buttons="Ok" Caption="User Notification" DisplayName="Message Box - User Notification" sap:VirtualizedContainerService.HintSize="464,58.2857142857143" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Please press Ok and select your folder to save a .csv file containing a list of hackathons.&quot;]" TopMost="True" />
+    <ui:SelectFolder DisplayName="Select Folder - Folder to Save" sap:VirtualizedContainerService.HintSize="464,21.7142857142857" sap2010:WorkflowViewState.IdRef="SelectFolder_1" SelectedFolder="[FolderToSave]" />
+    <Assign DisplayName="Assign - Set FilePath" sap:VirtualizedContainerService.HintSize="464,61.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="ui:GenericValue">[FilePath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="ui:GenericValue">[FolderToSave + "\" + "MLH_Hackathons_" + DateTime.Now.ToString("MMddyy") + ".csv"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:PathExists DisplayName="Path Exists - File Path" Exists="[FileExists]" sap:VirtualizedContainerService.HintSize="464,90.8571428571429" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[FilePath]" PathType="File" />
+    <If Condition="[FileExists]" DisplayName="If - File Exists " sap:VirtualizedContainerService.HintSize="464,213.714285714286" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete - File Path" sap:VirtualizedContainerService.HintSize="200,21.7142857142857" sap2010:WorkflowViewState.IdRef="Delete_2" Path="[FilePath]" />
+      </If.Then>
+    </If>
+    <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[HackathonDataTable]" Delimitator="Comma" DisplayName="Write CSV - Hackathon CSV" FilePath="[FilePath]" sap:VirtualizedContainerService.HintSize="464,86.2857142857143" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" />
+    <ui:MessageBox ChosenButton="{x:Null}" Buttons="Ok" Caption="User Notification" DisplayName="Message Box - User Notification" sap:VirtualizedContainerService.HintSize="464,58.2857142857143" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;The file has been saved to: &quot; + FilePath]" TopMost="True" />
+  </Sequence>
+</Activity>
